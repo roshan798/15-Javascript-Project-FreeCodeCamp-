@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Julee&family=Poppins:ital,wght@0,400;0,500;1,600&family=Ubuntu:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Poppins, sans-serif;
+}
+body {
+  background: #191641;
+  color: white;
+}
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 500px;
+}
+@media only screen and (max-width: 500px) {
+  .container {
+    width: 80%;
+  }
+}
+.img-container img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: -1px -1px 10px rgba(164, 13, 202, 0.63);
+  cursor: pointer;
+}
+.title {
+  text-align: center;
+  font-size: 1.5rem;
+}
+.title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  background-color: rgb(58, 126, 158);
+  border-radius: 2px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.review-container {
+  margin-top: 3rem;
+  padding: 1rem;
+  border-radius: 10px;
+  background: #16143a;
+
+  box-shadow: 2px 2px 8px gray, -2px -2px 8px gray;
+}
+.img-container {
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+#author {
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+  color: rgb(119, 119, 119);
+  text-shadow: 1px 1px 3px rgb(0, 0, 0);
+  margin: top 3px;
+}
+#job {
+  color: greenyellow;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+#info {
+  font-style: italic;
+  font-family: rajdhani;
+  letter-spacing: 1px;
+
+
+}
+button {
+  background-color: transparent;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  text-shadow: 1px 1px 10px rgb(93, 67, 105);
+}
+button:hover {
+  color: #9089f3;
+}
+#pre {
+  margin-right: 5px;
+}
+#random {
+  padding: 6px 15px;
+  border: 1px solid rgb(49, 219, 205);
+  border-radius: 6px;
+  background-color: rgba(49, 219, 205, 0.295);
+  color: rgb(49, 219, 205);
+  transition: 0.1s;
+}
+#random:hover {
+  background-color: rgb(49, 219, 205);
+  color: #191641;
+  font-weight: bold;
+  transform: scale(1.06);
+  box-shadow: 1px 1px 10px rgba(128, 128, 128, 0.589);
+}
