@@ -1,0 +1,221 @@
+@import url("https://fonts.googleapis.com/css2?family=Monoton&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root {
+  font-size: 16px;
+}
+/*  */
+:root {
+  --bar-width: 50px;
+  --bar-height: 8px;
+  --hamburger-gap: 6px;
+  --foreground: black;
+  --background: rgb(255, 255, 255);
+  --hamburger-margin: 1rem;
+  --animation-timing: 150ms ease-in-out;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--hamburger-gap) * 2);
+}
+.hamburger-menu {
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: var(--hamburger-gap);
+  width: max-content;
+  position: absolute;
+  top: var(--hamburger-margin);
+  right: var(--hamburger-margin);
+  z-index: 2;
+  cursor: pointer;
+}
+.hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+}
+.hamburger-menu:has(input:focus-visible)::before,
+.hamburger-menu input:focus-visible,
+.hamburger-menu:has(input:focus-visible)::after {
+  border: 1px solid var(--background);
+  box-shadow: 0 0 0 1px var(--foreground);
+}
+
+.hamburger-menu input,
+.hamburger-menu::before,
+.hamburger-menu::after {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: var(--foreground);
+  border-radius: 999px;
+  transform-origin: left center;
+  transition: opacity var(--animation-timing), width var(--animation-timing);
+}
+.hamburger-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+}
+
+.hamburger-menu input:checked {
+  opacity: 0;
+  width: 0;
+}
+
+.hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+.hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+/*  */
+
+.navbar {
+  font-size: 1.1rem;
+  height: 4rem;
+  box-shadow: 0 1px 5px gray;
+  width: 100vw;
+  padding-left: 30%;
+  padding-right: 2rem;
+}
+.list-container {
+  width: 100%;
+  justify-content: space-between;
+  flex-direction: row;
+}
+.navbar,
+.list-container,
+ul {
+  display: flex;
+  align-items: center;
+}
+ul {
+  list-style: none;
+}
+
+i {
+  display: block;
+}
+
+ul a,
+i {
+  margin-left: 12px;
+  text-decoration: none;
+  color: #0d1018;
+  letter-spacing: 2px;
+  transition: 200ms;
+}
+.logo {
+  position: absolute;
+  left: var(--hamburger-margin);
+  top: var(--hamburger-margin);
+  color: #0d1018;
+  letter-spacing: 2px;
+  font-family: "Monoton", cursive;
+  word-spacing: -1px;
+  font-size: 1.4rem;
+  cursor: context-menu;
+}
+i {
+  opacity: 0.5;
+}
+i:hover {
+  opacity: 1;
+}
+ul a:hover {
+  color: #4060b9;
+}
+
+.navbar .container {
+  position: relative;
+  right: -95%;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  display: grid;
+  place-items: center;
+  /* visibility: hidden; */
+}
+.navbar .container > * {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background-color: black;
+  transition: 0.2s ease-in;
+}
+.bar1 {
+  box-shadow: 0px -3px 2px rgb(255, 255, 255);
+  top: 1px;
+  transform-origin: top left;
+}
+.bar3 {
+  bottom: 1px;
+  transform-origin: bottom left;
+}
+
+.clicked .bar2 {
+  visibility: hidden;
+}
+.clicked .bar1 {
+  z-index: 99;
+  top: calc(10%);
+  left: 1px;
+  transform: rotate(45deg);
+}
+.clicked .bar3 {
+  bottom: calc(10%);
+  left: 1px;
+  transform: rotate(-45deg);
+}
+@media only screen and (max-width: 850px) {
+  .hamburger-menu {
+    visibility: visible;
+  }
+  .list-container ul {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 10px 0;
+    text-align: left;
+  }
+  .navbar {
+    padding: 0;
+  }
+  .social-icons {
+    display: none;
+  }
+  .list-container {
+    flex-direction: row;
+    width: 0;
+    height: 100vh;
+    overflow: hidden;
+    position: absolute;
+    top: 4rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+    justify-content: flex-start;
+    transition: all 200ms ease-in-out;
+    padding-left: 2rem;
+
+  }
+  .list-container li {
+    width: 100%;
+    margin-left: -20rem;
+    transition: margin var(--animation-timing);
+  }
+  .hamburger-menu:has(input:checked) + .list-container {
+    width: 200px;
+    box-shadow: 0 1px 2px 1px gray;
+  }
+  .hamburger-menu:has(input:checked) + .list-container li {
+    margin-left: 2rem;
+  }
+}
